@@ -1,18 +1,45 @@
-menu = Menu.create(name: "Main Menu")
+# Clear existing data
+Item.destroy_all
+Section.destroy_all
+Menu.destroy_all
+MenuSection.destroy_all
+SectionItem.destroy_all
+Modifier.destroy_all
+ModifierGroup.destroy_all
+ItemModifierGroup.destroy_all
 
-section1 = menu.sections.create(name: "Classic Pizzas")
-section2 = menu.sections.create(name: "Customizable Pizzas")
+# Create items
+item1 = Item.create(product_type: 'Product', identifier: 'margherita', label: 'Margherita Pizza', description: 'Classic Margherita Pizza', price: 8.99)
+item2 = Item.create(product_type: 'Product', identifier: 'pepperoni', label: 'Pepperoni Pizza', description: 'Pepperoni Pizza', price: 9.99)
+item3 = Item.create(product_type: 'Product', identifier: 'veggie', label: 'Veggie Pizza', description: 'Vegetable Pizza', price: 10.99)
 
-item1 = section1.items.create(name: "Margherita Pizza", item_type: "Product")
-item2 = section1.items.create(name: "Pepperoni Pizza", item_type: "Product")
+# Create sections
+section1 = Section.create(identifier: 'classic_pizzas', label: 'Classic Pizzas', description: 'Classic Pizzas')
+section2 = Section.create(identifier: 'custom_pizzas', label: 'Custom Pizzas', description: 'Customizable Pizzas')
 
-item3 = section2.items.create(name: "Custom Pizza", item_type: "Product")
+# Create menu
+menu = Menu.create(identifier: 'pizza_menu', label: 'Pizza Menu', state: 'active', start_date: Date.today, end_date: Date.today + 30)
 
-modifier_group1 = item3.modifier_groups.create(name: "Size", min_required: 1, max_required: 1)
-modifier_group2 = item3.modifier_groups.create(name: "Toppings", min_required: 0, max_required: 5)
+# Create menu sections
+MenuSection.create(menu: menu, section: section1, display_order: 1)
+MenuSection.create(menu: menu, section: section2, display_order: 2)
 
-modifier1 = modifier_group1.modifiers.create(name: "10\" Pizza", default_quantity: 1, item: item3)
-modifier2 = modifier_group1.modifiers.create(name: "12\" Pizza", default_quantity: 0, item: item3)
-modifier3 = modifier_group2.modifiers.create(name: "Extra Cheese", default_quantity: 0, item: item3)
-modifier4 = modifier_group2.modifiers.create(name: "Olives", default_quantity: 0, item: item3)
-modifier5 = modifier_group2.modifiers.create(name: "Peppers", default_quantity: 0, item: item3)
+# Create section items
+SectionItem.create(section: section1, item: item1, display_order: 1)
+SectionItem.create(section: section1, item: item2, display_order: 2)
+SectionItem.create(section: section2, item: item3, display_order: 1)
+
+# Create modifier groups
+modifier_group_size = ModifierGroup.create(identifier: 'size', label: 'Size', selection_required_min: 1, selection_required_max: 1)
+modifier_group_extra_cheese = ModifierGroup.create(identifier: 'extra_cheese', label: 'Extra Cheese', selection_required_min: 0, selection_required_max: 1)
+
+# Create item modifier groups
+ItemModifierGroup.create(item: item3, modifier_group: modifier_group_size)
+ItemModifierGroup.create(item: item3, modifier_group: modifier_group_extra_cheese)
+
+# Create modifiers
+Modifier.create(item: item3, modifier_group: modifier_group_size, display_order: 1, default_quantity: 0, price_override: 0.00)
+Modifier.create(item: item3, modifier_group: modifier_group_size, display_order: 2, default_quantity: 0, price_override: 1.00)
+Modifier.create(item: item3, modifier_group: modifier_group_extra_cheese, display_order: 1, default_quantity: 0, price_override: 1.50)
+
+puts "Seeding completed!"
