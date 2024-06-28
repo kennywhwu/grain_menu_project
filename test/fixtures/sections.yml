@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  menu: one
+  identifier: MyString
+  label: MyString
+  description: MyString
 
 two:
-  name: MyString
-  menu: two
+  identifier: MyString
+  label: MyString
+  description: MyString

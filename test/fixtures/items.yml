@@ -1,11 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  item_type: MyString
-  section: one
+  type: 
+  identifier: MyString
+  label: MyString
+  description: MyString
+  price: 1.5
 
 two:
-  name: MyString
-  item_type: MyString
-  section: two
+  type: 
+  identifier: MyString
+  label: MyString
+  description: MyString
+  price: 1.5

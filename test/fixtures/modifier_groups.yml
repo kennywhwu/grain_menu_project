@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  min_required: 1
-  max_required: 1
-  item: one
+  identifier: MyString
+  label: MyString
+  selection_required_min: 1
+  selection_required_max: 1
 
 two:
-  name: MyString
-  min_required: 1
-  max_required: 1
-  item: two
+  identifier: MyString
+  label: MyString
+  selection_required_min: 1
+  selection_required_max: 1
