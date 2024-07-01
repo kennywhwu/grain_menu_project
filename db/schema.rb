@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_28_022731) do
     t.string "label"
     t.string "description"
     t.float "price"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,7 +37,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_28_022731) do
   create_table "menu_sections", force: :cascade do |t|
     t.bigint "menu_id", null: false
     t.bigint "section_id", null: false
-    t.integer "display_order"
+    t.integer "display_order", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["menu_id"], name: "index_menu_sections_on_menu_id"
@@ -65,8 +66,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_28_022731) do
   create_table "modifiers", force: :cascade do |t|
     t.bigint "item_id", null: false
     t.bigint "modifier_group_id", null: false
-    t.integer "display_order"
-    t.integer "default_quantity"
+    t.integer "display_order", default: 0
+    t.integer "default_quantity", default: 0
     t.float "price_override"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -77,7 +78,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_28_022731) do
   create_table "section_items", force: :cascade do |t|
     t.bigint "section_id", null: false
     t.bigint "item_id", null: false
-    t.integer "display_order"
+    t.integer "display_order", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_section_items_on_item_id"
