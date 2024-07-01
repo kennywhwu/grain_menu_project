@@ -5,7 +5,7 @@ module Types
     field :id, ID, null: false
     field :menus, [Types::MenuType], null: false
     field :sections, [Types::SectionType], null: false
-    field :display_order, Integer, default: 0
+    field :display_order, Integer, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   end
