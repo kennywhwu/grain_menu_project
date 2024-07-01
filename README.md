@@ -219,6 +219,18 @@ Access the live GraphQL API with a POST request and query to: [Menu API URL](htt
 }
 ```
 
+## Monitoring
+
+Several metrics would be helpful to monitor and analyze for performance optimization:
+
+- Average and 95th percentile response time
+- Error rates
+  - HTTP-related
+  - GraphQL query-related
+- Request rates (also identify peak times)
+- Database query execution time
+- CPU/Memory usage
+
 ## Future Improvements
 
 - Add complete testing for different query scenarios
